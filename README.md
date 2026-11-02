@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Desafio 03 - Tela de Cadastro (Clone da DIO) com React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto desenvolvido como parte da **Formação React Developer** na plataforma da **Digital Innovation One (DIO)**.
 
-## Available Scripts
+O objetivo deste desafio foi implementar a **Tela de Cadastro** completa no projeto de clone da plataforma DIO, aplicando boas práticas de componentização, controle de formulários com **React Hook Form**, validação de esquemas com **Yup**, estilização via **Styled-Components** e navegação com **React Router DOM v6**.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Tela de Cadastro (`/cadastro`):**
+  - Campos: Nome completo, E-mail e Senha.
+  - Ícones indicativos nos inputs via `react-icons/md` (`MdPerson`, `MdEmail`, `MdLock`).
+  - Botão de submissão com variante visual personalizada.
+  - Termos de uso e políticas de privacidade conforme o design do Figma.
+  - Link de redirecionamento direto para a tela de login (`/login`).
+- **Validação de Formulários (Yup + React Hook Form):**
+  - Validação em tempo real no evento de alteração (`mode: 'onChange'`).
+  - Mensagens de erro claras para campos obrigatórios, formato de e-mail e tamanho mínimo de caracteres.
+  - Integração do componente customizado `Input` com o hook `useForm` através do `Controller`.
+- **Roteamento Dinâmico:**
+  - Navegação entre as páginas **Home (`/`)**, **Login (`/login`)**, **Cadastro (`/cadastro`)** e **Feed (`/feed`)**.
+- **Testes Automatizados:** Testes unitários com React Testing Library e Jest validando renderização de campos e mensagens de erro de validação.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tecnologias Utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React 18**
+- **JavaScript (ES6+)**
+- **React Router DOM v6** (roteamento declarativo)
+- **React Hook Form** (performance e gerenciamento de formulários)
+- **Yup** + **@hookform/resolvers** (validação de schemas)
+- **Styled-Components** (CSS-in-JS e tema global)
+- **React Icons** (Material Design Icons)
+- **Axios** (integração HTTP)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Estrutura de Pastas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+trilha-react-desafio-3/
+├── public/                 # HTML e assets estáticos
+├── src/
+│   ├── assets/             # Logos e imagens da DIO
+│   ├── components/
+│   │   ├── Button/         # Botão reutilizável
+│   │   ├── Card/           # Card do feed
+│   │   ├── Header/         # Cabeçalho com navegação
+│   │   ├── Input/          # Campo de texto com ícone e mensagem de erro
+│   │   └── UserInfo/       # Barra de progresso e perfil do usuário
+│   ├── pages/
+│   │   ├── cadastro/       # Tela de Cadastro implementada (Desafio 03)
+│   │   ├── feed/           # Feed da plataforma
+│   │   ├── home/           # Página inicial
+│   │   └── login/          # Tela de login
+│   ├── services/
+│   │   └── api.js          # Instância do Axios
+│   ├── styles/
+│   │   └── global.js       # Reset e fontes globais
+│   ├── App.js              # Definição das rotas
+│   └── index.js            # Inicialização da aplicação
+├── db.json                 # Mock de dados para API json-server
+├── package.json
+└── README.md
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Como Executar
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pré-requisitos
+- [Node.js](https://nodejs.org/) (versão 16+)
+- npm ou yarn
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clonar o repositório
+```bash
+git clone https://github.com/MuriloBGodoy/trilha-react-desafio-3.git
+cd trilha-react-desafio-3
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. Instalar dependências
+```bash
+npm install --legacy-peer-deps
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 3. Iniciar a aplicação
+```bash
+npm start
+```
+Acesse [http://localhost:3000](http://localhost:3000) no seu navegador. Para acessar a tela de cadastro diretamente: [http://localhost:3000/cadastro](http://localhost:3000/cadastro).
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧪 Como Rodar os Testes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm test -- --watchAll=false
+```
 
-### Code Splitting
+Resultado:
+```text
+PASS src/pages/cadastro/Cadastro.test.jsx
+  ✓ renderiza os campos da tela de cadastro
+  ✓ exibe mensagem de erro quando campos obrigatorios nao sao preenchidos
+  ✓ exibe mensagem de erro para email com formato invalido
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Tests: 3 passed, 3 total
+```
